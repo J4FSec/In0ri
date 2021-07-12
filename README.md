@@ -1,5 +1,5 @@
 ![](img/logo_transparent.png)
-![GitHub](https://img.shields.io/github/license/In0ri/In0ri) ![](https://img.shields.io/badge/Python-3.6-informational) ![](https://img.shields.io/badge/uses-Flask-informational) ![](https://img.shields.io/badge/uses-Tensorflow-informational) ![](https://img.shields.io/badge/uses-Keras-informational) ![](https://img.shields.io/badge/uses-OpenSSL-informational) ![](https://img.shields.io/badge/uses-watchdog-informational)
+![GitHub](https://img.shields.io/github/license/J4FSec/In0ri) ![](https://img.shields.io/badge/Python-3.6-informational) ![](https://img.shields.io/badge/uses-Flask-informational) ![](https://img.shields.io/badge/uses-Tensorflow-informational) ![](https://img.shields.io/badge/uses-Keras-informational) ![](https://img.shields.io/badge/uses-OpenSSL-informational) ![](https://img.shields.io/badge/uses-watchdog-informational)
 
 In0ri is a defacement detection system utilizing a image-classification convolutional neural network.
 
@@ -16,7 +16,7 @@ When monitoring a website, In0ri will periodically take a screenshot of the webs
 ### Cloning the repository
 
 ```sh
-git clone https://github.com/In0ri/In0ri.git
+git clone https://github.com/J4FSec/In0ri.git
 cd In0ri
 ```
 
