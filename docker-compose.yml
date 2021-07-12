@@ -1,0 +1,50 @@
+version: "3.5"
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+    volumes:
+      - type: volume
+        source: MONGO_DATA
+        target: /data/db
+      - type: volume
+        source: MONGO_CONFIG
+        target: /data/configdb
+  flask:
+    build: .
+    image: defaced:v1
+    container_name: flask_app
+    restart: unless-stopped
+    environment:
+      MONGODB_USERNAME: admin
+      MONGODB_PASSWORD: admin
+      MONGODB_HOSTNAME: mongodb
+    ports:
+        - "8080:8080"
+        - "8088:8088"
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+    volumes: 
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  MONGO_DATA:
+    name: MONGO_DATA
+  MONGO_CONFIG:
+    name: MONGO_CONFIG
