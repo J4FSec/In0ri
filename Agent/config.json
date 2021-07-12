@@ -1,0 +1,7 @@
+{
+    "id":"01",
+    "key":"123123123",
+    "rootPath":"/var/www/html",
+    "excludePath":"",
+    "apiServer":""
+}
