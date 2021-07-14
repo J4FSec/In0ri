@@ -34,8 +34,8 @@ EMAIL_PASSWORD = "$uper$ecurePa$$word"
 Edit the file `chatbot.py`
 
 ```py
-CHAT_ID= 'foo' // Channel ID to send notifications to
-TOKEN = 'bar' // Bot token retrieved from @BotFather
+CHAT_ID= 'foo' # Channel ID to send notifications to
+TOKEN = 'bar' # Bot token retrieved from @BotFather
 ```
 
 ### Starting In0ri
