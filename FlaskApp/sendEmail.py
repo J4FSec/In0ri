@@ -13,7 +13,7 @@ def sendMessage(receiver, subject, message, imagePath=None):
     msg["To"] = receiver
     msg.set_content(message)
 
-    if imagePath != None:
+    if imagePath is not None:
         with open(imagePath, "rb") as f:
             file_data = f.read()
             file_type = imghdr.what(f.name)
