@@ -15,25 +15,31 @@ f.close()
 
 
 def on_modified(event):
-    if len(excludePath) != 0 and re.search(excludePath, event.src_path) != None:
+    if len(excludePath) != 0 and re.search(excludePath, event.src_path) is not None:
         return 0
     else:
         print(f"Notification, {event.src_path} has been modified")
         path = event.src_path
         path = path.replace(config["rootPath"], "")
-        response = requests.post(server, json={"key": key, "path": path})
-    return response
+        try:
+            response = requests.post(server, json={"key": key, "path": path})
+            print(response.json())
+        except requests.ConnectionError as error:
+            print("Server not found!")
 
 
 def on_moved(event):
-    if len(excludePath) != 0 and re.search(excludePath, event.src_path) != None:
+    if len(excludePath) != 0 and re.search(excludePath, event.src_path) is not None:
         return 0
     else:
         print(f"Notification, {event.src_path} has been modified")
         path = event.src_path
         path = path.replace(config["path"], "")
-        response = requests.post(server, json={"key": key, "path": path})
-    return response
+        try:
+            response = requests.post(server, json={"key": key, "path": path})
+            print(response.json())
+        except requests.ConnectionError as error:
+            print("Server not found!")
 
 
 if __name__ == "__main__":

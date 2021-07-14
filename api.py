@@ -27,7 +27,7 @@ def checkdeface():
     key = slug(body["key"])
     active_key = {"active_key": key}
     data = get_single_data(active_key)
-    if data == None:
+    if data is None:
         res = {"status": "404 Key Invalid!"}
         return res
     url = data["url"] + body["path"]
@@ -53,7 +53,7 @@ def checkdeface():
             res = {"status": "Website was defaced!"}
             print("Website was defaced!")
         else:
-            res = {"status": "Every thing oke!"}
+            res = {"status": "Everything oke!"}
             print("Everything oke!")
     return res
 
