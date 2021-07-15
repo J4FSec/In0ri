@@ -46,7 +46,7 @@ docker-compose up -d
 
 ## Usage
 
-There's two ways to deploy In0ri:
+There's two ways to deploy and using In0ri:
 * Running off crontab by periodically visiting the url.
 * Internal agent running off the web server
 
