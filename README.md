@@ -96,6 +96,8 @@ And run the Agent:
 ```sh
 python3 agent.py
 ```
+## References
+Model training is handled by [Shu](https://github.com/J4FSec/Shu)
 
 ## Authors
 
