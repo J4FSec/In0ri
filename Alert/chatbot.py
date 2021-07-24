@@ -1,8 +1,8 @@
 from telegram import Bot
 from datetime import datetime
 
-CHAT_ID = "bar"
-TOKEN = "foo"
+CHAT_ID = "-1001158847222"
+TOKEN = "1786196183:AAFyuJ-9KPkByqvpO6T6Wm671w0CQ-dXMV0"
 bot = Bot(TOKEN)
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")

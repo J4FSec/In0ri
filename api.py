@@ -9,7 +9,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 
 from checkdefaced import check
-from Alert.chatbot import sendAlert
+from Alert.chatbot import sendBot
 from screenshot import screenshot
 from FlaskApp.database import get_single_data
 from Alert.sendEmail import sendMessage
@@ -49,7 +49,7 @@ def checkdeface():
         img_path = screenshot(url)
         defaced = check(img_path)
         if defaced:
-            sendAlert(url, img_path)
+            sendBot(url, img_path)
             subject = "Website Defacement"
             message = (
                 f"You website was defaced!\nURL: {url} \nPath infected: {body['path']}"
