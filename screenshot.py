@@ -1,5 +1,6 @@
 # coding=utf-8
 import os
+import time
 import hashlib
 from PIL import Image
 from selenium import webdriver
@@ -7,8 +8,10 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-if not os.path.exists('/opt/In0ri/images'):
-    os.makedirs('/opt/In0ri/images')
+if not os.path.exists("/opt/In0ri/images"):
+    os.makedirs("/opt/In0ri/images")
+
+
 def screenshot(url):
     options = webdriver.ChromeOptions()
     options.headless = True
@@ -20,6 +23,7 @@ def screenshot(url):
     try:
         driver.get(url)
         print("Screenshoting..." + url)
+        time.sleep(6)
         driver.get_screenshot_as_file("/opt/In0ri/images/web_screenshot.png")
         driver.quit()
     except RuntimeError:

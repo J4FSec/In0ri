@@ -3,5 +3,5 @@
     "key":"123123123",
     "rootPath":"/var/www/html",
     "excludePath":"",
-    "apiServer":""
+    "apiServer":"http://<serverIP>:8088/checkdeface"
 }

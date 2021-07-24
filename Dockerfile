@@ -1,6 +1,5 @@
 FROM tensorflow/tensorflow
 
-LABEL maintainer="Hoang Trung Nguyen <htnguyenbg@gmail.com>"
 RUN apt update
 RUN python3 -m pip install --upgrade pip
 RUN apt install -y \

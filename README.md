@@ -22,16 +22,17 @@ cd In0ri
 
 ### Configuring email credentials to send notifications and agent keys from
 
-Edit the file `FlaskApp/sendEmail.py`
+Edit the file `Alert/sendEmail.py`
 
 ```py
+EMAIL_SERVER = "mail.example.com"
 EMAIL_ADDRESS = "foo@gmail.com"
 EMAIL_PASSWORD = "$uper$ecurePa$$word"
 ```
 
 ### Configure Telegram notification
 
-Edit the file `chatbot.py`
+Edit the file `Alert/chatbot.py`
 
 ```py
 CHAT_ID= 'foo' # Channel ID to send notifications to
@@ -46,7 +47,7 @@ docker-compose up -d
 
 ## Usage
 
-There's two ways to deploy In0ri:
+There's two ways to deploy and using In0ri:
 * Running off crontab by periodically visiting the url.
 * Internal agent running off the web server
 
