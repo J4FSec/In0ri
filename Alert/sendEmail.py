@@ -25,3 +25,4 @@ def sendMessage(receiver, subject, message, imagePath=None):
     with smtplib.SMTP_SSL(EMAIL_SERVER, 465) as smtp:
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         smtp.send_message(msg)
+        smtp.close()
