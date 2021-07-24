@@ -22,16 +22,17 @@ cd In0ri
 
 ### Configuring email credentials to send notifications and agent keys from
 
-Edit the file `FlaskApp/sendEmail.py`
+Edit the file `Alert/sendEmail.py`
 
 ```py
+EMAIL_SERVER = "mail.example.com"
 EMAIL_ADDRESS = "foo@gmail.com"
 EMAIL_PASSWORD = "$uper$ecurePa$$word"
 ```
 
 ### Configure Telegram notification
 
-Edit the file `chatbot.py`
+Edit the file `Alert/chatbot.py`
 
 ```py
 CHAT_ID= 'foo' # Channel ID to send notifications to

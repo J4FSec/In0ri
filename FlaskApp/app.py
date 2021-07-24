@@ -4,7 +4,14 @@ from flask import (
     request,
     escape,
 )
-import sendEmail
+
+import os, sys
+
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
+
+from Alert.sendEmail import sendMessage
 import database as db
 import schedule as sch
 import createLicense as license
@@ -77,7 +84,7 @@ def createAgent():
         db.update_existing(unique, key_update)
         subject = "Get active key!"
         message = f"You Agent's active key is: {active_key}"
-        sendEmail.sendMessage(receiver, subject, message)
+        sendMessage(receiver, subject, message)
         response = "OKE"
     return response
 

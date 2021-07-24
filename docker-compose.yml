@@ -38,6 +38,7 @@ services:
     volumes: 
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+      - ./Alert:/opt/In0ri/Alert
 
 networks:
   app-network:

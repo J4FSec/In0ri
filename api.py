@@ -2,12 +2,17 @@ from flask import Flask
 from flask import request
 import json
 import requests
+import os, sys
+
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 
 from checkdefaced import check
-from chatbot import sendAlert
+from Alert.chatbot import sendAlert
 from screenshot import screenshot
 from FlaskApp.database import get_single_data
-from FlaskApp.sendEmail import sendMessage
+from Alert.sendEmail import sendMessage
 import re
 
 

@@ -1,14 +1,14 @@
 from telegram import Bot
 from datetime import datetime
 
-CHAT_ID = "foo"
-TOKEN = "bar"
+CHAT_ID = "***REMOVED***"
+TOKEN = "***REMOVED***"
 bot = Bot(TOKEN)
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 
 
-def sendAlert(url, img_path):
+def sendBot(url, img_path):
     bot.sendPhoto(
         CHAT_ID,
         photo=open(img_path, "rb"),

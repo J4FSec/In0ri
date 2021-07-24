@@ -2,8 +2,9 @@ import smtplib
 import imghdr
 from email.message import EmailMessage
 
-EMAIL_ADDRESS = ""
-EMAIL_PASSWORD = ""
+EMAIL_SERVER = "smtp.gmail.com"
+EMAIL_ADDRESS = "***REMOVED***"
+EMAIL_PASSWORD = "***REMOVED***"
 
 
 def sendMessage(receiver, subject, message, imagePath=None):
@@ -21,8 +22,6 @@ def sendMessage(receiver, subject, message, imagePath=None):
             file_data, maintype="image", subtype=file_type, filename="Website image"
         )
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+    with smtplib.SMTP_SSL(EMAIL_SERVER, 465) as smtp:
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         smtp.send_message(msg)
-
-
