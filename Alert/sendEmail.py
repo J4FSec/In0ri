@@ -3,8 +3,8 @@ import imghdr
 from email.message import EmailMessage
 
 EMAIL_SERVER = "smtp.gmail.com"
-EMAIL_ADDRESS = "htnguyenbg@gmail.com"
-EMAIL_PASSWORD = "15132311"
+EMAIL_ADDRESS = "***REMOVED***"
+EMAIL_PASSWORD = "***REMOVED***"
 
 
 def sendMessage(receiver, subject, message, imagePath=None):
