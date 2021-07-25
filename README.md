@@ -98,7 +98,9 @@ And run the Agent:
 python3 agent.py
 ```
 ## References
-Model training is handled by [Shu](https://github.com/J4FSec/Shu)
+
+* Model training is handled by [Shu](https://github.com/J4FSec/Shu)
+* Mentioned by [Kitploit](https://www.kitploit.com/2021/07/in0ri-defacement-detection-with-deep.html)
 
 ## Authors
 
