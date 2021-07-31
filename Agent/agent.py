@@ -32,9 +32,9 @@ def on_moved(event):
     if len(excludePath) != 0 and re.search(excludePath, event.src_path) is not None:
         return 0
     else:
-        print(f"Notification, {event.src_path} has been modified")
-        path = event.src_path
-        path = path.replace(config["path"], "")
+        print(f"Notification, File {event.src_path} has been moved to {event.dest_path}")
+        path = event.dest_path
+        path = path.replace(config["rootPath"], "")
         try:
             response = requests.post(server, json={"key": key, "path": path})
             print(response.json())
@@ -43,7 +43,7 @@ def on_moved(event):
 
 
 if __name__ == "__main__":
-    patterns = ["*.html", "*.htm", "*.php", "*.txt", "*.jsp", "*.aspx", "*.shtml"]
+    patterns = ["*.html", "*.htm", "*.php", "*.txt", "*.jsp", "*.aspx", "*.shtml", "*.hta"]
     ignore_patterns = None
     ignore_directories = False
     case_sensitive = True
