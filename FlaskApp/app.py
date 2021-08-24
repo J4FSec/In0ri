@@ -3,6 +3,7 @@ from flask import (
     render_template,
     request,
     escape,
+    jsonify,
 )
 
 import os, sys
@@ -70,10 +71,11 @@ def register():
 @app.route("/createAgent", methods=["POST"])
 def createAgent():
     url = slug(request.form["url"])
-    receiver = slug(request.form["email"])
+    # receiver = slug(request.form["email"])
     check = 1
     for data in db.get_multiple_data():
         if data["url"] == url:
+            receiver = data["email"]
             check = 0
     if check == 1:
         response = "ERROR"
@@ -106,6 +108,15 @@ def deleteURL():
         response = "OKE"
     return response
 
+
+@app.route("/listURL", methods=["GET"])
+def listURL():
+    response = []
+    i=1
+    for data in db.get_multiple_data():
+        response.append({'stt':i,'email':data['email'], 'time':data['time'], 'url':data['url']})
+        i=i+1
+    return jsonify(response)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8080")
