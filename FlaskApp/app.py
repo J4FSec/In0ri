@@ -53,6 +53,10 @@ def register():
     url = slug(request.form["url"])
     email = slug(request.form["email"])
     time = slug(request.form["time"])
+
+    if len(url) == 0 or len(email) == 0 or time == 0:
+        return "Null"
+
     data = {"email": email, "time": time, "active_key": "", "url": url}
     check = 0
     for check in db.get_multiple_data():
@@ -71,7 +75,6 @@ def register():
 @app.route("/createAgent", methods=["POST"])
 def createAgent():
     url = slug(request.form["url"])
-    # receiver = slug(request.form["email"])
     check = 1
     for data in db.get_multiple_data():
         if data["url"] == url:
@@ -117,6 +120,7 @@ def listURL():
         response.append({'stt':i,'email':data['email'], 'time':data['time'], 'url':data['url']})
         i=i+1
     return jsonify(response)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8080")
