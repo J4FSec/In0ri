@@ -1,6 +1,7 @@
 import time
 import json
 import requests
+import hashlib
 import re
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
@@ -19,10 +20,11 @@ def on_modified(event):
         return 0
     else:
         print(f"Notification, {event.src_path} has been modified")
+        file_hash = hashlib.md5(open(event.src_path, "rb").read()).hexdigest()
         path = event.src_path
         path = path.replace(config["rootPath"], "")
         try:
-            response = requests.post(server, json={"key": key, "path": path})
+            response = requests.post(server, json={"key": key, "path": path, "hash": file_hash})
             print(response.json())
         except requests.ConnectionError as error:
             print("Server not found!")
@@ -33,10 +35,11 @@ def on_moved(event):
         return 0
     else:
         print(f"Notification, File {event.src_path} has been moved to {event.dest_path}")
+        file_hash = hashlib.md5(open(event.dest_path, "rb").read()).hexdigest()
         path = event.dest_path
         path = path.replace(config["rootPath"], "")
         try:
-            response = requests.post(server, json={"key": key, "path": path})
+            response = requests.post(server, json={"key": key, "path": path, "hash": file_hash})
             print(response.json())
         except requests.ConnectionError as error:
             print("Server not found!")
