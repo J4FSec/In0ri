@@ -1,115 +1,268 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-<!-- basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- mobile metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<!-- site metas -->
-<title>Web Defacement Monitoring</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content=""> 
-<!-- bootstrap css -->
-<link rel="stylesheet" type="text/css" href="static/assets/css/bootstrap.min.css">
-<!-- style css -->
-<link rel="stylesheet" type="text/css" href="static/assets/css/styleindex.css">
-<!-- Responsive-->
-<link rel="stylesheet" href="static/assets/css/responsive.css">
-<!-- fevicon -->
-<!-- <link rel="icon" href="static/assets/images/fevicon.png" type="image/gif" /> -->
-<!-- Scrollbar Custom CSS -->
-<link rel="stylesheet" href="static/assets/css/jquery.mCustomScrollbar.min.css">
-<!-- Tweaks for older IEs-->
-<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<!-- owl stylesheets --> 
-<link rel="stylesheet" href="static/assets/css/owl.carousel.min.css">
-<!-- <link rel="stylesheet" href="static/assets/css/owl.theme.default.min.css"> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>In0ri</title>
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/logo.png">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
+    <!-- datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+
 </head>
+
 <body>
-  <!--header section start -->
-    <div class="header_section">
-      <div class="header_left">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="logo"><a href="/"><img src="static/assets/images/logo.png"></a></div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/deleteURL">Delete URL</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Team</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div class="banner_main">
-          <h1 class="banner_taital">Defacement <br>Monitorning</h1>
-          <!-- <p class="banner_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever </p> -->
-          <div class="btn_main">
-            <div class="contact_bt"><a href="/register">Register </a></div>
-            <div class="contact_bt"><a href="/createAgent">Create Agent</a></div>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="index.html" class="brand-logo">
+                <img class="logo-abbr" src="../static/images/logo.png" alt="">
+                <img class="logo-compact" src="../static/images/logo-text.png" alt="">
+                <img class="brand-title" src="../static/images/logo-text.png" alt="">
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <div class="search_bar dropdown">
+                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                    <i class="mdi mdi-magnify"></i>
+                                </span>
+                                <div class="dropdown-menu p-0 m-0">
+                                    <form>
+                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="navbar-nav header-right">
+                            <li class="nav-item dropdown notification_dropdown">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-bell"></i>
+                                    <div class="pulse-css"></div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="list-unstyled">
+                                        <li class="media dropdown-item">
+                                            <span class="success"><i class="ti-user"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p><strong>Martin</strong> has added a <strong>customer</strong> Successfully
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>                                        
+                                    </ul>
+                                    <a class="all-notification" href="#">See all notifications <i
+                                            class="ti-arrow-right"></i></a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-account"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="./app-profile.html" class="dropdown-item">
+                                        <i class="icon-user"></i>
+                                        <span class="ml-2">Profile </span>
+                                    </a>
+                                    <a href="./email-inbox.html" class="dropdown-item">
+                                        <i class="icon-envelope-open"></i>
+                                        <span class="ml-2">Inbox </span>
+                                    </a>
+                                    <a href="./page-login.html" class="dropdown-item">
+                                        <i class="icon-key"></i>
+                                        <span class="ml-2">Logout </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="quixnav">
+            <div class="quixnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Main Menu</li>
+                    <!-- <li><a href="index.html"><i class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                    </li> -->
+                    <li><a class="" href="/" aria-expanded="false"><i
+                                class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                    </li>
+
+                    <li><a class="" href="/" aria-expanded="false"><i
+                                class="icon icon-plug"></i><span class="nav-text">Setting</span></a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">URLs Available</h3>
+                        <!-- Button trigger modal -->
+                    </div>
+                    <div class="card-header">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            Add URL
+                        </button>
+                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            Edit
+                        </button> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="urls" style="width: 100%;">
+                                <thead >
+                                  <tr id="list-header">
+                                    <th scope="col">Index</th>
+                                    <th scope="col">URL</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Genarate Active Key</th>
+                                    <th scope="col">Delete</th>
+                                  </tr>
+                                </thead>
+                                
+                                <tbody>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <h5 class="modal-title" id="exampleModalLongTitle">Add new URL</h5> -->
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <!-- form  -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Create new monitoring</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <form>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">URL</label>
+                                    <div class="col-sm-10">
+                                        <input type="url" id="url" name="url" autocomplete="off" class="form-control" placeholder="URL" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" id="email" name="email" autocomplete="off" class="form-control" placeholder="Email" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Time</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="time" name="time" autocomplete="off" class="form-control" placeholder="hh:mm" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- end form  -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" id="btnAdd">Submit</button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="header_right">
-        <img src="static/assets/images/banner-img.png" class="banner_img">
-      </div>
-    </div>
+    <!--**********************************
+        Scripts
+    ***********************************-->
     
+    <script src="../static/jquery/index.js"></script>
+    <!-- Required vendors -->
+    <script src="../static/vendor/global/global.min.js"></script>
 
-    <div class="project_section_2 layout_padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-sm-6">
-            <div class="icon_1"><img src="static/assets/images/icon-3.png"></div>
-            <h3 class="accounting_text_1">1000+</h3>
-            <p class="yers_text">Years of Business</p>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="icon_1"><img src="static/assets/images/icon-4.png"></div>
-            <h3 class="accounting_text_1">20000+</h3>
-            <p class="yers_text">Projects Delivered</p>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="icon_1"><img src="static/assets/images/icon-2.png"></div>
-            <h3 class="accounting_text_1">10000+</h3>
-            <p class="yers_text">Satisfied Customers</p>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="icon_1"><img src="static/assets/images/icon-1.png"></div>
-            <h3 class="accounting_text_1">1500+</h3>
-            <p class="yers_text">Services</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script src="../static/js/quixnav-init.js"></script>
+    <script src="../static/js/custom.min.js"></script>
 
-    <!--footer section end -->
-    <!-- Javascript files-->
-    <script src="static/assets/js/jquery.min.js"></script>
-    <script src="static/assets/js/popper.min.js"></script>
-    <script src="static/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="static/assets/js/jquery-3.0.0.min.js"></script>
-    <script src="static/assets/js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="static/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="static/assets/js/custom.js"></script>
-    <!-- javascript --> 
-    <!-- <script src="static/assets/js/owl.carousel.js"></script> -->
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> 
+    <!-- Circle progress -->
+
 </body>
+
 </html>
