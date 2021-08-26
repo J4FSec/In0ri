@@ -56,14 +56,10 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
 @import url("./../icons/simple-line-icons/css/simple-line-icons.css");
 @import url("./../icons/font-awesome-old/css/font-awesome.min.css");
-@import url("./../icons/material-design-iconic-font/css/materialdesignicons.min.css");
+/* @import url("./../icons/material-design-iconic-font/css/materialdesignicons.min.css"); */
 @import url("./../icons/themify-icons/css/themify-icons.css");
 @import url("./../icons/line-awesome/css/line-awesome.min.css");
 @import url("./../icons/avasta/css/style.css");
-@import url(./../vendor/animate/animate.min.css);
-@import url(./../vendor/aos/css/aos.min.css);
-@import url(./../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
-@import url(./../vendor/metismenu/css/metisMenu.min.css);
 .gradient_one {
   background-image: linear-gradient(to right, rgba(186, 1, 181, 0.85) 0%, rgba(103, 25, 255, 0.85) 100%); }
 
