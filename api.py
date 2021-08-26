@@ -15,6 +15,7 @@ from FlaskApp.database import get_single_data
 from Alert.sendEmail import sendMessage
 import re
 
+shell_hashes = eval(open("database.data").read())
 
 def slug(string):
     pattern = "|%[0-9]{1,}|%|--|#|;|/\*|'|\"|\\\*|\[|\]|xp_|\&gt|\&ne|\&lt|&"
@@ -37,6 +38,13 @@ def checkdeface():
         return res
     url = data["url"] + body["path"]
     receiver = data["email"]
+
+    # Shellsum detection
+    if body["hash"] in shell_hashes.keys():
+        is_shell = True
+    else:
+        is_shell = False
+
     try:
         response = requests.get(url)
     except requests.ConnectionError:
@@ -48,7 +56,16 @@ def checkdeface():
     else:
         img_path = screenshot(url)
         defaced = check(img_path)
-        if defaced:
+        if is_shell:
+            sendBot(url, img_path)
+            subject = "Website Shelled"
+            message = (
+                f"You website was shelled!\nURL: {url} \nPath infected: {body['path']}"
+            )
+            sendMessage(receiver, subject, message, img_path)
+            res = {"status": "Website was shelled!"}
+            print("Website was shelled!")
+        elif defaced:
             sendBot(url, img_path)
             subject = "Website Defacement"
             message = (
