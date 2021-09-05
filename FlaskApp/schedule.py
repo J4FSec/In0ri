@@ -17,7 +17,7 @@ def create(domain, time, email):
     else:
         job = my_cron.new(command=command, comment=comment)
         job.minute.every(time)
-        my_cron.write(user="root")
+        my_cron.write(user=environ.get("USER"))
         print(job.is_valid())
 
 
@@ -31,7 +31,7 @@ def edit(domain, time, email):
             my_cron.remove(job)
             job = my_cron.new(command=command, comment=comment)
             job.minute.every(time)
-            my_cron.write(user="root")
+            my_cron.write(user=environ.get("USER"))
             print("Sucessfull!")
     if check == 0:
         print("Domain not found!")
@@ -44,15 +44,8 @@ def delete(domain):
         if job.comment == comment:
             check = 1
             my_cron.remove(job)
-            my_cron.write(user="root")
+            my_cron.write(user=environ.get("USER"))
             print("Sucessfull!")
     if check == 0:
         print("Domain not found!")
 
-
-# # edit(domain1, time1)
-# # create(domain1, time1)
-# delete(domain2)
-# my_cron.remove_all()
-# my_cron.write(user='hoang')
-# print(my_cron)
