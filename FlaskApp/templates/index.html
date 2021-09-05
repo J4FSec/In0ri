@@ -15,7 +15,6 @@
    
     <!-- datatables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
- 
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
 
 </head>
@@ -168,12 +167,9 @@
                         <!-- Button trigger modal -->
                     </div>
                     <div class="card-header">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddURLs">
                             Add URL
                         </button>
-                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                            Edit
-                        </button> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -184,8 +180,7 @@
                                     <th scope="col">URL</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Time</th>
-                                    <th scope="col">Genarate Active Key</th>
-                                    <th scope="col">Delete</th>
+                                    <th scope="col">Action</th>
                                   </tr>
                                 </thead>
                                 
@@ -201,11 +196,14 @@
 
 
     </div>
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="ModalAddURLs" tabindex="-1" role="dialog" aria-labelledby="ModalAddURLTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <!-- <h5 class="modal-title" id="exampleModalLongTitle">Add new URL</h5> -->
+            <div class="card-header">
+                <h4 class="card-title">Create new monitoring</h4>
+            </div>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -213,9 +211,7 @@
             <div class="modal-body">
                 <!-- form  -->
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Create new monitoring</h4>
-                    </div>
+                    
                     <div class="card-body">
                         <div class="basic-form">
                             <form>
@@ -250,6 +246,40 @@
           </div>
         </div>
       </div>
+
+      <!-- ModalDetails -->
+      <div class="modal fade" id="ModalDetails" tabindex="-1" role="dialog" aria-labelledby="ModalDetailsTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Details</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="tblDetails" class="table">
+                        <tr>
+                            <td>URL</td>
+                            <td><span id="show_url"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><span id="show_email"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Active Key</td>
+                            <td><span id="show_activekey"></span></td>
+                        </tr>
+                        <span id="show_img"></span>
+                        
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+      </div>
     <!--**********************************
         Scripts
     ***********************************-->
@@ -257,7 +287,6 @@
     <script src="../static/jquery/index.js"></script>
     <!-- Required vendors -->
     <script src="../static/vendor/global/global.min.js"></script>
-
     <script src="../static/js/quixnav-init.js"></script>
     <script src="../static/js/custom.min.js"></script>
 
