@@ -29,7 +29,11 @@ function initTableData() {
             {
                 data: null,
                 className: "dt-center editor-delete",
+<<<<<<< HEAD
                 defaultContent: '<button onclick="details();" type="button" title="Details" id="btnDetails" class="btn btn-rounded btn-outline-primary" data-toggle="modal" data-target="#ModalDetails"><i class="fa fa-eye-slash" aria-hidden="true"></i></button> <button onclick="createActiveKey();" title="Create Key" type="button" id="btnDelete" class="btn btn-rounded btn-outline-primary"><i class="fa fa-key" aria-hidden="true"></i></button> <button onclick="deleteitem();" type="button" title="Delete" id="btnDelete" class="btn btn-rounded btn-outline-danger"><i class="fa fa-trash"></button>',
+=======
+                defaultContent: '<button onclick="details();" type="button" id="btnDetails" class="btn btn-rounded btn-outline-primary" data-toggle="modal" data-target="#ModalDetails"><i class="fa fa-eye-slash" aria-hidden="true"></i></button> <button onclick="createActiveKey();" type="button" id="btnDelete" class="btn btn-rounded btn-outline-primary"><i class="fa fa-key" aria-hidden="true"></i></button> <button onclick="deleteitem();" type="button" id="btnDelete" class="btn btn-rounded btn-outline-danger"><i class="fa fa-trash"></button>',
+>>>>>>> e3b46280aed34928603577d7a12b04d5c502a226
                 orderable: false
             }
     	]
@@ -46,6 +50,10 @@ $(document).ready(function (){
 });
 
 function details(){
+<<<<<<< HEAD
+=======
+	var table = $('#urls').DataTable();
+>>>>>>> e3b46280aed34928603577d7a12b04d5c502a226
 	$('#urls tr').on( 'click', 'button', function (){
 		var data = table.row( $(this).parents('tr') ).data();
 		var path_img = data['path_img']
@@ -122,6 +130,10 @@ $('#btnAdd').click(function(e) {
 			}else{
 				alert("URL existed. Please try again!");
 			}
+<<<<<<< HEAD
+=======
+			console.log(res);
+>>>>>>> e3b46280aed34928603577d7a12b04d5c502a226
 		},
 		error: function(error) {
 			console.log(error);
