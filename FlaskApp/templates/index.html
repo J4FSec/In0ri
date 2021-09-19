@@ -14,7 +14,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- datatables -->
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
+=======
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
+>>>>>>> e3b46280aed34928603577d7a12b04d5c502a226
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
 
 </head>
@@ -129,6 +133,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped" id="urls" style="width: 100%;">
+<<<<<<< HEAD
                                 <thead>
                                     <tr id="list-header">
                                         <th scope="col">Index</th>
@@ -137,6 +142,16 @@
                                         <th scope="col">Time</th>
                                         <th scope="col">Actions</th>
                                     </tr>
+=======
+                                <thead >
+                                  <tr id="list-header">
+                                    <th scope="col">Index</th>
+                                    <th scope="col">URL</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Actions</th>
+                                  </tr>
+>>>>>>> e3b46280aed34928603577d7a12b04d5c502a226
                                 </thead>
 
                                 <tbody>
@@ -151,6 +166,7 @@
 
 
     </div>
+<<<<<<< HEAD
     <div class="modal fade" id="ModalAddURLs" tabindex="-1" role="dialog" aria-labelledby="ModalAddURLTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -176,6 +192,31 @@
                                             <input type="url" id="url" name="url" autocomplete="off"
                                                 class="form-control" placeholder="URL" required>
                                         </div>
+=======
+    <div class="modal fade" id="ModalAddURLs" tabindex="-1" role="dialog" aria-labelledby="ModalAddURLTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <h5 class="modal-title" id="exampleModalLongTitle">Add new URL</h5> -->
+            <div class="card-header">
+                <h4 class="card-title">Create new monitoring</h4>
+            </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <!-- form  -->
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <form>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">URL</label>
+                                    <div class="col-sm-10">
+                                        <input type="url" id="url" name="url" autocomplete="off" class="form-control" placeholder="URL" required>
+>>>>>>> e3b46280aed34928603577d7a12b04d5c502a226
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Email</label>
@@ -245,7 +286,45 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
+=======
+      </div>
+
+      <!-- ModalDetails -->
+      <div class="modal fade" id="ModalDetails" tabindex="-1" role="dialog" aria-labelledby="ModalDetailsTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Details</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="tblDetails" class="table">
+                        <tr>
+                            <td>URL</td>
+                            <td><span id="show_url"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><span id="show_email"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Active Key</td>
+                            <td><span id="show_activekey"></span></td>
+                        </tr>
+                        <span id="show_img"></span>
+                        
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+      </div>
+>>>>>>> e3b46280aed34928603577d7a12b04d5c502a226
     <!--**********************************
         Scripts
     ***********************************-->
