@@ -1,5 +1,6 @@
 import base64
 import hashlib
+
 from OpenSSL import (
     crypto,
 )  # requires at least version 0.15.2 (or the latest version from GitHub, as this one is not yet released as of 2015/11/11)
@@ -11,7 +12,7 @@ with open("../keys/privkey.pem") as keyfile:
     private_key_string = keyfile.read()
 with open("../keys/pubkey.pem") as keyfile:
     public_key_string = keyfile.read()
-product_code = "HoangNguyen-Defacement"
+product_code = "In0ri-Defacement"
 
 
 def make_license_source(domain):

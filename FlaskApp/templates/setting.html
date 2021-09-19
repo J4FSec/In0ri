@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>In0ri</title>
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/icons/logo/logo.png">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="/" class="brand-logo">
+                <img class="logo-abbr" src="../static/icons/logo/logo.png" alt="">
+                <img class="logo-compact" src="../static/icons/logo/logo-text.png" alt="">
+                <img class="brand-title" src="../static/icons/logo/logo-text.png" alt="">
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <div class="search_bar dropdown">
+                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                    <i class="mdi mdi-magnify"></i>
+                                </span>
+                                <div class="dropdown-menu p-0 m-0">
+                                    <form>
+                                        <input class="form-control" type="search" placeholder="Search"
+                                            aria-label="Search">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="quixnav">
+            <div class="quixnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Main Menu</li>
+                    <!-- <li><a href="index.html"><i class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                    </li> -->
+                    <li><a class="" href="/" aria-expanded="false"><i class="icon icon-single-04"></i><span
+                                class="nav-text">Dashboard</span></a>
+                    </li>
+
+                    <li><a class="" href="/setting" aria-expanded="false"><i class="icon icon-plug"></i><span
+                                class="nav-text">Setting</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="col-lg-12">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="welcome-text">Setting Alert</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Nav tabs -->
+                            <div class="default-tab">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#email">Email</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#telegram">Telegram</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active show" id="email" role="tabpanel">
+                                        <div class="pt-4">
+                                            <div class="SMTP"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="telegram">
+                                        <div class="pt-4">
+                                            <div class="BOT"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="ModalAddSMTP" tabindex="-1" role="dialog"
+                                aria-labelledby="ModalAddSMTPTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Setting Alert Email Server</h4>
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- form  -->
+                                            <div class="card">
+
+                                                <div class="card-body">
+                                                    <div class="basic-form">
+                                                        <form id="smtp">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-3 col-form-label">Mail
+                                                                    Server</label>
+                                                                <div class="col-sm-10 mb-2">
+                                                                    <input type="text" id="smtp_server" name="smtp_server"
+                                                                        autocomplete="off" class="form-control"
+                                                                        placeholder="smtp.example.com" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-3 col-form-label">Username</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="email" id="smtp_address" name="smtp_address"
+                                                                        autocomplete="off" class="form-control"
+                                                                        placeholder="Email" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-3 col-form-label">Password</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="password" id="smtp_password" name="smtp_password"
+                                                                        autocomplete="off" class="form-control"
+                                                                        placeholder="***********" required>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end form  -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" id="btnAddSMTP"
+                                                form="smtp">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal Add Telegram  -->
+                            <div class="modal fade" id="ModalAddBOT" tabindex="-1" role="dialog"
+                                aria-labelledby="ModalAddBOTTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Setting Chanel Alert Telegram</h4>
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- form  -->
+                                            <div class="card">
+
+                                                <div class="card-body">
+                                                    <div class="basic-form">
+                                                        <form id="bot">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Chat ID</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" id="chat_id" name="chat_id"
+                                                                        autocomplete="off" class="form-control"
+                                                                        placeholder="" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Token</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" id="token" name="token"
+                                                                        autocomplete="off" class="form-control"
+                                                                        placeholder="" required>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end form  -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" id="btnAddBOT"
+                                                form="bot">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+
+    <script src="../static/jquery/setting.js"></script>
+    <!-- Required vendors -->
+    <script src="../static/vendor/global/global.min.js"></script>
+    <script src="../static/js/quixnav-init.js"></script>
+    <script src="../static/js/custom.min.js"></script>
+
+    <!-- Circle progress -->
+
+</body>
+
+</html>

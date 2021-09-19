@@ -1,5 +1,4 @@
-var table;
-var editor;
+
 var urlUsers = "/listURL";
 function initTableData() {
     $.get(urlUsers, function(responseData) {
@@ -9,6 +8,8 @@ function initTableData() {
     			url: eachUser.url,
                 email: eachUser.email,
   				time: eachUser.time,
+  				active_key: eachUser.active_key,
+  				path_img: eachUser.path_img,
     		};
     	});
         $.noConflict();
@@ -25,16 +26,10 @@ function initTableData() {
     		{ data: 'url' },
     		{ data: 'email' },
     		{ data: 'time' },
-			{
-                data: null,
-                className: "dt-center editor-delete",
-                defaultContent: '<button onclick="createActiveKey();" type="button" id="btnDelete" class="btn btn-rounded btn-outline-primary"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>',
-                orderable: false
-            },
             {
                 data: null,
                 className: "dt-center editor-delete",
-                defaultContent: '<button onclick="deleteitem();" type="button" id="btnDelete" class="btn btn-rounded btn-outline-danger"><i class="fa fa-trash"></button>',
+                defaultContent: '<button onclick="details();" type="button" title="Details" id="btnDetails" class="btn btn-rounded btn-outline-primary" data-toggle="modal" data-target="#ModalDetails"><i class="fa fa-eye-slash" aria-hidden="true"></i></button> <button onclick="createActiveKey();" title="Create Key" type="button" id="btnDelete" class="btn btn-rounded btn-outline-primary"><i class="fa fa-key" aria-hidden="true"></i></button> <button onclick="deleteitem();" type="button" title="Delete" id="btnDelete" class="btn btn-rounded btn-outline-danger"><i class="fa fa-trash"></button>',
                 orderable: false
             }
     	]
@@ -48,20 +43,22 @@ function initTableData() {
 
 $(document).ready(function (){
 	initTableData();
-
-
-	$("#btnReloadData").on("click", function(){
-		//alert("reload data...")
-		table.ajax.reload();
-	});
 });
 
+function details(){
+	$('#urls tr').on( 'click', 'button', function (){
+		var data = table.row( $(this).parents('tr') ).data();
+		var path_img = data['path_img']
+		$('#show_url').append(data['url']);
+		$('#show_email').append(data['email']);
+		$('#show_activekey').append(data['active_key']);	
+		$('#show_img').append('<img class="card-img-top img-fluid" src="../static/images/'+path_img+'.png" alt="URL is not captured!">')	
+	});
+}
+
 function deleteitem() {
-    var table = $('#urls').DataTable();
- 
     $('#urls tr').on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        // alert( data['url'] +"'s email is: "+ data['email'] );
 		$.ajax({
 			url: '/deleteURL',
 			data: {'url':data['url']},
@@ -69,29 +66,22 @@ function deleteitem() {
 			success: function(res) {
 				if(res == "OKE"){
 					alert("Delete successful!");
-					// window.location.href = '/';
 					location.reload();
 				}else if (res == "Null"){
-					alert("Exception data!");
+					alert("Bad data!");
 					location.reload();
 				}else{
 					alert("URL not exist!")
 				}
-				console.log(res);
 			},
 			error: function(error) {
 				console.log(error);
 			}
 		});
-        // location.reload();
-
     } );
-
 }
 
 function createActiveKey() {
-    var table = $('#urls').DataTable();
- 
     $('#urls tr').on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();
 		$.ajax({
@@ -101,24 +91,19 @@ function createActiveKey() {
 			success: function(res) {
 				if(res == "OKE"){
 					alert("Generate Active Key Successful. Key sent your email!");
-					// window.location.href = '/';
 					location.reload();
 				}else if (res == "Null"){
-					alert("Exception data!");
+					alert("Bad data!");
 					location.reload();
 				}else{
-					alert("URL not invalid!")
+					alert("URL invalid!")
 				}
-				console.log(res);
 			},
 			error: function(error) {
 				console.log(error);
 			}
 		});
-        // location.reload();
-
     } );
-
 }
 
 $('#btnAdd').click(function(e) {
@@ -132,19 +117,14 @@ $('#btnAdd').click(function(e) {
 				alert("Register moniter successful!");
 				location.reload();
 			}else if (res == "Null"){
-				alert("Exception data!");
+				alert("Bad data!");
 				location.reload();
 			}else{
 				alert("URL existed. Please try again!");
 			}
-			console.log(res);
-			// alert("sussess");
 		},
 		error: function(error) {
-			// alert("error");
 			console.log(error);
-			
 		}
 	});
-	
 });

@@ -1,6 +1,6 @@
-from tensorflow import keras
-import tensorflow as tf
 import numpy as np
+import tensorflow as tf
+from tensorflow import keras
 
 img_height = 250
 img_width = 250

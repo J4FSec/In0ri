@@ -1,15 +1,15 @@
 # coding=utf-8
+import hashlib
 import os
 import time
-import hashlib
+
 from PIL import Image
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
-
-if not os.path.exists("/opt/In0ri/images"):
-    os.makedirs("/opt/In0ri/images")
+if not os.path.exists("/opt/In0ri/FlaskApp/static/images/"):
+    os.makedirs("/opt/In0ri/FlaskApp/static/images/")
 
 
 def screenshot(url):
@@ -20,20 +20,18 @@ def screenshot(url):
     options.add_argument("--disable-setuid-sandbox")
     options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(options=options)
+
+    name = hashlib.md5(url.encode())
     try:
         driver.get(url)
         print("Screenshoting..." + url)
         time.sleep(6)
-        driver.get_screenshot_as_file("/opt/In0ri/images/web_screenshot.png")
+        driver.get_screenshot_as_file(
+            "/opt/In0ri/FlaskApp/static/images/" + name.hexdigest() + ".png"
+        )
         driver.quit()
     except RuntimeError:
         print("URL " + url + " was died!")
         pass
-    # resize gov_images
-    print("resizing...")
-    image = Image.open("/opt/In0ri/images/web_screenshot.png")
-    new_image = image.resize((250, 250))
-    name = hashlib.md5(url.encode())
-    new_image.save("/opt/In0ri/images/" + name.hexdigest() + ".png")
 
-    return "/opt/In0ri/images/" + name.hexdigest() + ".png"
+    return "/opt/In0ri/FlaskApp/static/images/" + name.hexdigest() + ".png"

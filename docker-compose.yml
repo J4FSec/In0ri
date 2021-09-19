@@ -1,5 +1,4 @@
 version: "3.5"
-
 services:
   mongodb:
     image: mongo:latest
@@ -20,7 +19,7 @@ services:
         source: MONGO_CONFIG
         target: /data/configdb
   flask:
-    image: ***REMOVED***/defaced:v1
+    image: defaced:v2
     container_name: flask_app
     restart: unless-stopped
     environment:
