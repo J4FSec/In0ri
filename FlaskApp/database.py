@@ -1,5 +1,5 @@
-import pymongo
 import os
+import pymongo
 
 connection = pymongo.MongoClient(
     "mongodb://"
@@ -11,33 +11,37 @@ connection = pymongo.MongoClient(
     + ":27017/"
 )
 database = connection["deface"]
-collection = database["site"]
 
 
-def insert_data(data):
-    document = collection.insert_one(data)
-    return document.inserted_id
+class Database:
+    def __init__(self, database_name):
+        self.database_name = database_name
+        self.collection = database[database_name]
 
+    def insert_data(self, data):
+        document = self.collection.insert_one(data)
+        return document.inserted_id
 
-def get_single_data(data):
-    data = collection.find_one(data)
-    return data
+    def get_single_data(self, data):
+        data = self.collection.find_one(data)
+        return data
 
+    def get_multiple_data(self):
+        data = self.collection.find()
+        return list(data)
 
-def get_multiple_data():
-    data = collection.find()
-    return list(data)
+    def update_existing(self, unique, data):
+        document = self.collection.update_one(unique, {"$set": data})
+        return document.acknowledged
 
+    def update_noexiting(self, unique, data):
+        document = self.collection.update_one(unique, {"$set": data}, upsert=True)
+        return document.acknowledged
 
-def update_existing(unique, data):
-    document = collection.update_one(unique, {"$set": data})
-    return document.acknowledged
+    def update_empty(self, unique, data):
+        data = self.collection.update_one(unique, {"$pull": data})
+        return data
 
-
-def remove_data(data):
-    document = collection.delete_one(data)
-    return document.acknowledged
-
-
-# for x in get_multiple_data():
-#       print(x)
+    def remove_data(self, data):
+        document = self.collection.delete_one(data)
+        return document.acknowledged

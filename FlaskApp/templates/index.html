@@ -9,13 +9,12 @@
     <title>In0ri</title>
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/icons/logo/logo.png">
     <link href="../static/css/style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   
+
     <!-- datatables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
- 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
 
 </head>
@@ -47,9 +46,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="/" class="brand-logo">
-                <img class="logo-abbr" src="../static/images/logo.png" alt="">
-                <img class="logo-compact" src="../static/images/logo-text.png" alt="">
-                <img class="brand-title" src="../static/images/logo-text.png" alt="">
+                <img class="logo-abbr" src="../static/icons/logo/logo.png" alt="">
+                <img class="logo-compact" src="../static/icons/logo/logo-text.png" alt="">
+                <img class="brand-title" src="../static/icons/logo/logo-text.png" alt="">
             </a>
 
             <div class="nav-control">
@@ -76,55 +75,12 @@
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
                                     <form>
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                        <input class="form-control" type="search" placeholder="Search"
+                                            aria-label="Search">
                                     </form>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <ul class="navbar-nav header-right">
-                            <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-bell"></i>
-                                    <div class="pulse-css"></div>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="list-unstyled">
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-user"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong> Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>                                        
-                                    </ul>
-                                    <a class="all-notification" href="#">See all notifications <i
-                                            class="ti-arrow-right"></i></a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown header-profile">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-account"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="./app-profile.html" class="dropdown-item">
-                                        <i class="icon-user"></i>
-                                        <span class="ml-2">Profile </span>
-                                    </a>
-                                    <a href="./email-inbox.html" class="dropdown-item">
-                                        <i class="icon-envelope-open"></i>
-                                        <span class="ml-2">Inbox </span>
-                                    </a>
-                                    <a href="./page-login.html" class="dropdown-item">
-                                        <i class="icon-key"></i>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul> -->
                     </div>
                 </nav>
             </div>
@@ -142,14 +98,12 @@
                     <li class="nav-label first">Main Menu</li>
                     <!-- <li><a href="index.html"><i class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
                     </li> -->
-                    <li><a class="" href="/" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                    <li><a class="" href="/" aria-expanded="false"><i class="icon icon-single-04"></i><span
+                                class="nav-text">Dashboard</span></a>
                     </li>
-
-                    <li><a class="" href="/" aria-expanded="false"><i
-                                class="icon icon-plug"></i><span class="nav-text">Setting</span></a>
+                    <li><a class="" href="/setting" aria-expanded="false"><i class="icon icon-plug"></i><span
+                                class="nav-text">Setting</span></a>
                     </li>
-                    
                 </ul>
             </div>
         </div>
@@ -168,30 +122,26 @@
                         <!-- Button trigger modal -->
                     </div>
                     <div class="card-header">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddURLs">
                             Add URL
                         </button>
-                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                            Edit
-                        </button> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped" id="urls" style="width: 100%;">
-                                <thead >
-                                  <tr id="list-header">
-                                    <th scope="col">Index</th>
-                                    <th scope="col">URL</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Genarate Active Key</th>
-                                    <th scope="col">Delete</th>
-                                  </tr>
+                                <thead>
+                                    <tr id="list-header">
+                                        <th scope="col">Index</th>
+                                        <th scope="col">URL</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
                                 </thead>
-                                
+
                                 <tbody>
                                 </tbody>
-                              </table>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -201,63 +151,108 @@
 
 
     </div>
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="ModalAddURLs" tabindex="-1" role="dialog" aria-labelledby="ModalAddURLTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <!-- <h5 class="modal-title" id="exampleModalLongTitle">Add new URL</h5> -->
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <!-- form  -->
-                <div class="card">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">Add new URL</h5> -->
                     <div class="card-header">
                         <h4 class="card-title">Create new monitoring</h4>
                     </div>
-                    <div class="card-body">
-                        <div class="basic-form">
-                            <form>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">URL</label>
-                                    <div class="col-sm-10">
-                                        <input type="url" id="url" name="url" autocomplete="off" class="form-control" placeholder="URL" required>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- form  -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">URL</label>
+                                        <div class="col-sm-10">
+                                            <input type="url" id="url" name="url" autocomplete="off"
+                                                class="form-control" placeholder="URL" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Email</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" id="email" name="email" autocomplete="off" class="form-control" placeholder="Email" required>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" id="email" name="email" autocomplete="off"
+                                                class="form-control" placeholder="Email" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Time</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="time" name="time" autocomplete="off" class="form-control" placeholder="hh:mm" required>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Time</label>
+                                        <div class="form-row col-sm-5">
+                                            <div class="col-sm-6">
+                                                <input type="number" id="hours" name="hours" size="4" autocomplete="off"
+                                                class="form-control" value="0" maxlength="2" required>
+                                                <label>hours</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="number" id="minutes" name="minutes" maxlength="2" size="4" autocomplete="off"
+                                                class="form-control" value="0" required>
+                                                <label>minutes</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
+                    <!-- end form  -->
                 </div>
-                <!-- end form  -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btnAdd">Submit</button>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" id="btnAdd">Submit</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
+
+    <!-- ModalDetails -->
+    <div class="modal fade" id="ModalDetails" tabindex="-1" role="dialog" aria-labelledby="ModalDetailsTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Details</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="tblDetails" class="table">
+                        <tr>
+                            <td>URL</td>
+                            <td><span id="show_url"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><span id="show_email"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Active Key</td>
+                            <td><span id="show_activekey"></span></td>
+                        </tr>
+                        <span id="show_img"></span>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--**********************************
         Scripts
     ***********************************-->
-    
+
     <script src="../static/jquery/index.js"></script>
     <!-- Required vendors -->
     <script src="../static/vendor/global/global.min.js"></script>
-
     <script src="../static/js/quixnav-init.js"></script>
     <script src="../static/js/custom.min.js"></script>
 

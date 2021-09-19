@@ -1,6 +1,6 @@
 FROM tensorflow/tensorflow
 
-RUN apt update
+RUN apt-get update --fix-missing
 RUN python3 -m pip install --upgrade pip
 RUN apt install -y \
     python-flask \

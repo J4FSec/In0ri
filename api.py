@@ -1,21 +1,23 @@
-from flask import Flask
-from flask import request
 import json
+import os
+import sys
+
 import requests
-import os, sys
+from flask import Flask, request
 
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 
-from checkdefaced import check
-from Alert.chatbot import sendBot
-from screenshot import screenshot
-from FlaskApp.database import get_single_data
-from Alert.sendEmail import sendMessage
 import re
 
-shell_hashes = eval(open("database.data").read())
+import alert
+import FlaskApp.database
+from checkdefaced import check
+from screenshot import screenshot
+
+shell_hashes = eval(open("/opt/In0ri/database.data").read())
+
 
 def slug(string):
     pattern = "|%[0-9]{1,}|%|--|#|;|/\*|'|\"|\\\*|\[|\]|xp_|\&gt|\&ne|\&lt|&"
@@ -28,11 +30,13 @@ app = Flask(__name__)
 
 @app.route("/checkdeface", methods=["POST"])
 def checkdeface():
+    db = FlaskApp.database.Database("site")
+    al = alert.Alert()
     res = {}
     body = json.loads(request.data)
     key = slug(body["key"])
     active_key = {"active_key": key}
-    data = get_single_data(active_key)
+    data = db.get_single_data(active_key)
     if data is None:
         res = {"status": "404 Key Invalid!"}
         return res
@@ -62,16 +66,16 @@ def checkdeface():
             message = (
                 f"You website was shelled!\nURL: {url} \nPath infected: {body['path']}"
             )
-            sendMessage(receiver, subject, message, img_path)
+            al.sendMessage(receiver, subject, message, img_path)
             res = {"status": "Website was shelled!"}
             print("Website was shelled!")
         elif defaced:
-            sendBot(url, img_path)
+            al.sendBot(url, img_path)
             subject = "Website Defacement"
             message = (
                 f"You website was defaced!\nURL: {url} \nPath infected: {body['path']}"
             )
-            sendMessage(receiver, subject, message, img_path)
+            al.sendMessage(receiver, subject, message, img_path)
             res = {"status": "Website was defaced!"}
             print("Website was defaced!")
         else:
