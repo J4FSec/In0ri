@@ -1,14 +1,15 @@
 from hashlib import md5
-from os import environ
+from getpass import getuser
+
 
 from crontab import CronTab
 
-user = environ.get("USER")
+user = getuser()
 my_cron = CronTab(user=user)
 
 
 def create(domain, email, hours=None, minutes=None):
-    command = f"python3 /opt/In0ri/main.py {domain} {email} >> /var/log/cron.log 2>&1"
+    command = f"python3 /opt/In0ri/main.py {domain} {email}"
     comment = md5(domain.encode()).hexdigest()
     check = 0
     for job in my_cron:
@@ -22,12 +23,12 @@ def create(domain, email, hours=None, minutes=None):
             job.hour.every(hours)
         if minutes is not None:
             job.minute.every(minutes)
-        my_cron.write(user='root')
+        my_cron.write(user=user)
         print(job.is_valid())
 
 
 def edit(domain, email, hours=None, minutes=None):
-    command = f"python3 /opt/In0ri/main.py {domain} {email} >> /var/log/cron.log 2>&1"
+    command = f"python3 /opt/In0ri/main.py {domain} {email}"
     comment = md5(domain.encode()).hexdigest()
     check = 0
     for job in my_cron:
@@ -39,7 +40,7 @@ def edit(domain, email, hours=None, minutes=None):
                 job.hour.every(hours)
             if minutes is not None:
                 job.minute.every(minutes)
-            my_cron.write(user='root')
+            my_cron.write(user=user)
             print("Sucessfull!")
     if check == 0:
         print("Domain not found!")
@@ -52,7 +53,7 @@ def delete(domain):
         if job.comment == comment:
             check = 1
             my_cron.remove(job)
-            my_cron.write(user='root')
+            my_cron.write(user=user)
             print("Sucessfull!")
     if check == 0:
         print("Domain not found!")
