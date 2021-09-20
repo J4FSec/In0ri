@@ -20,46 +20,49 @@ git clone https://github.com/J4FSec/In0ri.git
 cd In0ri
 ```
 
-### Configuring email credentials to send notifications and agent keys from
+### Docker
 
-Edit the file `Alert/sendEmail.py`
-
-```py
-EMAIL_SERVER = "mail.example.com"
-EMAIL_ADDRESS = "foo@gmail.com"
-EMAIL_PASSWORD = "$uper$ecurePa$$word"
-```
-
-### Configure Telegram notification
-
-Edit the file `Alert/chatbot.py`
-
-```py
-CHAT_ID= 'foo' # Channel ID to send notifications to
-TOKEN = 'bar' # Bot token retrieved from @BotFather
-```
+You can also use In0ri via the official Docker container  [here](https://hub.docker.com/repository/docker/in0ri/defaced).
 
 ### Starting In0ri
 
 ```sh
 docker-compose up -d
 ```
+After running the In0ri, open an Internet browser to `https://<serverIP>:8080/` to show WebUI.
+
+### Configuring email credentials to send notifications and agent keys from
+
+Going to the WebUI and click tab "Setting" then select tag "Email" to configure email server.
+
+```py
+Mail Server = "mail.example.com"
+Username = "foo@gmail.com"
+Password = "$uper$ecurePa$$word"
+```
+
+### Configure Telegram notification
+
+Going to the WebUI and click tab "Setting" then select tag "Telegram" to configure Channel notifications on Telegram.
+
+```py
+Chat ID= 'foo' # Channel ID to send notifications to
+Token = 'bar' # Bot token retrieved from @BotFather
+```
 
 ## Usage
 
-There's two ways to deploy and using In0ri:
+There are two ways to deploy and using In0ri:
 * Running off crontab by periodically visiting the url.
 * Internal agent running off the web server
 
 ### First Method: URL Check
 
-Visit the WebUI on `https://<serverIP>:8080/` and click on "Register" then fill in the form and submit it.
+Visit the Dashboard tab on WebUI, click on "Add URLs" then fill in the form and submit it.
 
 ### Second Method: Internal Agent
 
-Visit the WebUI on `https://<serverIP>:8080/` and click on "Register" then fill in the form and submit it.
-
-Click on "Create Agent" then fill in the form and check your email for the Agent's **key**.
+At the table listing all urls which were registered on WebUI, click on "Create Key" button at column Actions, the Active Key will send to your email or click "Details" button to show it.
 
 On the web server that you wants to be monitored by In0ri, download the Agent folder from Github repository
 
