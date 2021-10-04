@@ -31,7 +31,8 @@ def screenshot(url):
         )
         driver.get_screenshot_as_file("/opt/In0ri/FlaskApp/static/images/" + name.hexdigest() + ".png")
         driver.quit()
-    except RuntimeError:
+    except Exception as e:
+        print(e)
         print("URL " + url + " was died!")
         pass
 
