@@ -14,7 +14,6 @@ import alert
 import FlaskApp.database
 from checkdefaced import check
 from screenshot import screenshot
-from searchstring import search
 
 shell_hashes = eval(open("/opt/In0ri/database.data").read())
 
@@ -60,7 +59,6 @@ def checkdeface():
     else:
         img_path = screenshot(url)
         defaced = check(img_path)
-        sign = search(url)
         if is_shell:
             sendBot(url, img_path)
             subject = "Website Shelled"
@@ -79,15 +77,6 @@ def checkdeface():
             al.sendMessage(receiver, subject, message, img_path)
             res = {"status": "Website was defaced!"}
             print("Website was defaced!")
-        elif sign is not None and sign != -1:
-            al.sendBot(url, img_path)
-            subject = "Website Defacement"
-            message = (
-                f"You website seems to be defaced!\nURL: {url} \nPath infected: {body['path']}"
-            )
-            al.sendMessage(receiver, subject, message, img_path)
-            res = {"status": "Website seems to be defaced!"}
-            print("Website seems to be defaced!")
         else:
             res = {"status": "Everything oke!"}
             print("Everything oke!")
