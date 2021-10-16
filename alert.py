@@ -37,18 +37,21 @@ class Alert:
         msg["To"] = receiver
         msg.set_content(message)
 
-        if imagePath is not None:
-            with open(imagePath, "rb") as f:
-                file_data = f.read()
-                file_type = imghdr.what(f.name)
-            msg.add_attachment(
-                file_data, maintype="image", subtype=file_type, filename="Website image"
-            )
+        try: 
+            if imagePath is not None:
+                with open(imagePath, "rb") as f:
+                    file_data = f.read()
+                    file_type = imghdr.what(f.name)
+                msg.add_attachment(
+                    file_data, maintype="image", subtype=file_type, filename="Website image"
+                )
 
-        with smtplib.SMTP_SSL(EMAIL_SERVER, 465) as smtp:
-            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-            smtp.send_message(msg)
-            smtp.close()
+            with smtplib.SMTP_SSL(EMAIL_SERVER, 465) as smtp:
+                smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+                smtp.send_message(msg)
+                smtp.close()
+        except smtplib.SMTPException as e:
+            print(e)
 
     def sendBot(self, url, img_path):
         for data in db.get_multiple_data():
