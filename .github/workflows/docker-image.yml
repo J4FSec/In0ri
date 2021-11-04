@@ -16,7 +16,3 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag in0ri/defaced:latest
-    - name: Login to the Docker hub
-      run: docker login --username "in0ri" --password "***REMOVED***"
-    - name: push docker images
-      run: docker push in0ri/defaced:latest
