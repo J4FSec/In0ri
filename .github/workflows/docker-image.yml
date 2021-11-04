@@ -15,8 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ***REMOVED***/defaced:latest
-    - name: Login to the Docker hub
-      run: docker login --username "***REMOVED***" --password "***REMOVED***"
-    - name: push docker images
-      run: docker push ***REMOVED***/defaced:latest
+      run: docker build . --file Dockerfile --tag in0ri/defaced:latest

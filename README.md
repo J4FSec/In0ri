@@ -22,7 +22,7 @@ cd In0ri
 
 ### Docker
 
-You can also use In0ri via the official Docker container  [here](https://hub.docker.com/repository/docker/***REMOVED***/defaced).
+You can also use In0ri via the official Docker container  [here](https://hub.docker.com/repository/docker/in0ri/defaced).
 
 ### Starting In0ri
 
@@ -104,7 +104,7 @@ python3 agent.py
 
 * Model training is handled by [Shu](https://github.com/J4FSec/Shu)
 * [Black Hat Europe 2021](https://www.blackhat.com/eu-21/arsenal/schedule/index.html#inri-25045)
-* Mentioned by [Kitploit](https://www.kitploit.com/2021/07/***REMOVED***-defacement-detection-with-deep.html)
+* Mentioned by [Kitploit](https://www.kitploit.com/2021/07/in0ri-defacement-detection-with-deep.html)
 
 ## Authors
 

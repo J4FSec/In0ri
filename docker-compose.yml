@@ -19,7 +19,7 @@ services:
         source: MONGO_CONFIG
         target: /data/configdb
   flask:
-    image: ***REMOVED***/defaced:latest
+    image: in0ri/defaced:latest
     container_name: flask_app
     restart: unless-stopped
     environment:
