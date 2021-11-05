@@ -3,8 +3,8 @@ FROM tensorflow/tensorflow
 RUN apt-get update --fix-missing
 RUN python3 -m pip install --upgrade pip
 RUN apt install -y \
-    python-flask \
-    python-requests \
+    python3-flask \
+    python3-requests \
     cron \
     chromium-chromedriver \
 && pip install selenium \
