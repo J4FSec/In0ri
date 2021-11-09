@@ -57,5 +57,6 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
             cd In0ri
-            docker-compose up -d
+            docker-conpose pull
+            docker-compose up -d --remove-orphans
       
