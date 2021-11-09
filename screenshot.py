@@ -6,20 +6,23 @@ import time
 from PIL import Image
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 if not os.path.exists("/opt/In0ri/FlaskApp/static/images/"):
     os.makedirs("/opt/In0ri/FlaskApp/static/images/")
 
+firefox_path=GeckoDriverManager().install()
+
 
 def screenshot(url):
-    options = webdriver.ChromeOptions()
+    options = webdriver.FirefoxOptions()
     options.headless = True
     options.add_argument("--start-maximized")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-setuid-sandbox")
-    options.add_argument("--no-sandbox")
-    driver = webdriver.Chrome(options=options)
+    options.add_argument('--disable-dev-shm-usage') 
+    options.add_argument('--disable-setuid-sandbox')
+    options.add_argument('--no-sandbox')
+    driver = webdriver.Firefox(options=options, executable_path=firefox_path)
+
 
     name = hashlib.md5(url.encode())
     try:

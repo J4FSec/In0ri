@@ -1,4 +1,3 @@
-import hashlib
 import json
 import re
 import time
@@ -20,12 +19,11 @@ def on_modified(event):
         return 0
     else:
         print(f"Notification, {event.src_path} has been modified")
-        file_hash = hashlib.md5(open(event.src_path, "rb").read()).hexdigest()
         path = event.src_path
         path = path.replace(config["rootPath"], "")
         try:
             response = requests.post(
-                server, json={"key": key, "path": path, "hash": file_hash}
+                server, json={"key": key, "path": path}
             )
             print(response.json())
         except requests.ConnectionError as error:
@@ -39,12 +37,11 @@ def on_moved(event):
         print(
             f"Notification, File {event.src_path} has been moved to {event.dest_path}"
         )
-        file_hash = hashlib.md5(open(event.dest_path, "rb").read()).hexdigest()
         path = event.dest_path
         path = path.replace(config["rootPath"], "")
         try:
             response = requests.post(
-                server, json={"key": key, "path": path, "hash": file_hash}
+                server, json={"key": key, "path": path}
             )
             print(response.json())
         except requests.ConnectionError as error:

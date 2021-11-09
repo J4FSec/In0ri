@@ -15,8 +15,6 @@ import FlaskApp.database
 from checkdefaced import check
 from screenshot import screenshot
 
-shell_hashes = eval(open("/opt/In0ri/database.data").read())
-
 
 def slug(string):
     pattern = "|%[0-9]{1,}|%|--|#|;|/\*|'|\"|\\\*|\[|\]|xp_|\&gt|\&ne|\&lt|&"
@@ -33,7 +31,12 @@ def checkdeface():
     al = alert.Alert()
     res = {}
     body = json.loads(request.data)
-    key = slug(body["key"])
+    if len(body["key"]) == 0 and len(body["path"]) == 0: 
+        res = {"status": "400 Bad Request!"}
+        return res
+    else: 
+        key = slug(body["key"])
+    
     active_key = {"active_key": key}
     data = db.get_single_data(active_key)
     if data is None:
@@ -41,12 +44,6 @@ def checkdeface():
         return res
     url = data["url"] + body["path"]
     receiver = data["email"]
-
-    # Shellsum detection
-    if body["hash"] in shell_hashes.keys():
-        is_shell = True
-    else:
-        is_shell = False
 
     try:
         response = requests.get(url)
@@ -59,16 +56,7 @@ def checkdeface():
     else:
         img_path = screenshot(url)
         defaced = check(img_path)
-        if is_shell:
-            sendBot(url, img_path)
-            subject = "Website Shelled"
-            message = (
-                f"You website was shelled!\nURL: {url} \nPath infected: {body['path']}"
-            )
-            al.sendMessage(receiver, subject, message, img_path)
-            res = {"status": "Website was shelled!"}
-            print("Website was shelled!")
-        elif defaced:
+        if defaced:
             al.sendBot(url, img_path)
             subject = "Website Defacement"
             message = (

@@ -47,8 +47,8 @@ $(document).ready(function (){
 
 function details(){
 	$('#urls tr').on( 'click', 'button', function (){
-		var data = table.row( $(this).parents('tr') ).data();
-		var path_img = data['path_img']
+		let data = table.row( $(this).parents('tr') ).data();
+		let path_img = data['path_img']
 		$('#show_url').append(data['url']);
 		$('#show_email').append(data['email']);
 		$('#show_activekey').append(data['active_key']);	
