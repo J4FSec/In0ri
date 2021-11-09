@@ -19,7 +19,6 @@ def on_modified(event):
         return 0
     else:
         print(f"Notification, {event.src_path} has been modified")
-        file_hash = hashlib.md5(open(event.src_path, "rb").read()).hexdigest()
         path = event.src_path
         path = path.replace(config["rootPath"], "")
         try:
