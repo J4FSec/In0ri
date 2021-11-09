@@ -49,7 +49,7 @@ jobs:
       run: echo ${{ steps.docker_build.outputs.digest }}
       
     - name: Update VPS
-      uses: appleboy/ssh-action@main
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_SERVER }}
         username: ${{ secrets.SSH_UNAME }}
