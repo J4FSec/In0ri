@@ -19,8 +19,7 @@ def main(url, receiver):
         message = f"You website was defaced!\nURL: {url}"
         al.sendMessage(receiver, subject, message, img_path)
         print("Website was defaced!")
-    else:
-        print("Everything oke!")
+    print("Everything oke!")
 
 
 main(url, receiver)

@@ -10,8 +10,6 @@ connection = pymongo.MongoClient(
     + os.environ["MONGODB_HOSTNAME"]
     + ":27017/"
 )
-
-
 database = connection["deface"]
 
 
