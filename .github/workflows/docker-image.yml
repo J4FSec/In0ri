@@ -48,3 +48,14 @@ jobs:
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
       
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v0.1.3
+      with:
+        host: ${{ secrets.SSH_SERVER }}
+        username: ${{ secrets.SSH_UNAME }}
+        KEY: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+            cd In0ri
+            docker-compose up -d
+      
