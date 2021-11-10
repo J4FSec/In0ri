@@ -1,0 +1,9 @@
+[Unit]
+Description=In0ri Agent
+
+[Service]
+ExecStart=/usr/bin/python3 /root/In0ri/Agent/agent.py
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

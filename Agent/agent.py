@@ -3,10 +3,12 @@ import re
 import time
 
 import requests
+from os import path
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
-f = open("config.json", "r")
+path = path.dirname(path.normpath(__file__))
+f = open(f"{path}/config.json", "r")
 config = json.load(f)
 key = config["key"]
 excludePath = config["excludePath"]
