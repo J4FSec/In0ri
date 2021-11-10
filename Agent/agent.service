@@ -4,6 +4,7 @@ Description=In0ri Agent
 [Service]
 ExecStart=/usr/bin/python3 /root/In0ri/Agent/agent.py
 Restart=on-failure
+Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=default.target
