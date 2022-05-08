@@ -70,8 +70,8 @@ function initTableData() {
 			htmlsmtp += htmlSegment;
 			let containersmtp = document.querySelector('.SMTP');
 			containersmtp.innerHTML = htmlsmtp;
-			$('#smtp_server').append(smtp_server);
-			$('#smtp_address').append(smtp_address);
+			$('#smtp_server').html(smtp_server);
+			$('#smtp_address').html(smtp_address);
 		}
 		
 
@@ -120,8 +120,8 @@ function initTableData() {
 			htmlbot += htmlSegment;
 			let containerbot = document.querySelector('.BOT');
     		containerbot.innerHTML = htmlbot;
-			$('#first_name').append(first_name);
-			$('#title').append(title);
+			$('#first_name').html(first_name);
+			$('#title').html(title);
 		}
         $.noConflict();
     }).fail(function() {

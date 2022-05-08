@@ -49,10 +49,10 @@ function details(){
 	$('#urls tr').on( 'click', 'button', function (){
 		let data = table.row( $(this).parents('tr') ).data();
 		let path_img = data['path_img']
-		$('#show_url').append(data['url']);
-		$('#show_email').append(data['email']);
-		$('#show_activekey').append(data['active_key']);	
-		$('#show_img').append('<img class="card-img-top img-fluid" src="../static/images/'+path_img+'.png" alt="URL is not captured!">')	
+		$('#show_url').html(data['url']);
+		$('#show_email').html(data['email']);
+		$('#show_activekey').html(data['active_key']);	
+		$('#show_img').html('<img class="card-img-top img-fluid" src="../static/images/'+path_img+'.png" alt="URL is not captured!">')	
 	});
 }
 
