@@ -17,7 +17,7 @@ import schedule as sch
 
 
 def slug(string):
-    pattern = "|%[0-9]{1,}|%|--|#|;|/\*|'|\"|\\\*|\[|\]|\<|\>|xp_|\&gt|\&ne|\&lt|&"
+    pattern = "|%[0-9]{1,}|%|--|#|;|/\*|'|\"|\\\*|\[|\]|\<|\>|xp_|\$gt|\$ne|\$lt|$"
     result = re.sub(pattern, "", string)
     return result
 
