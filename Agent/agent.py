@@ -3,11 +3,11 @@ import re
 import time
 
 import requests
-from os import path
+from os import getcwd
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
-path = path.dirname(path.normpath(__file__))
+path = getcwd()
 f = open(f"{path}/config.json", "r")
 config = json.load(f)
 key = config["key"]
