@@ -46,15 +46,15 @@ jobs:
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
       
-    - name: Update VPS
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_SERVER }}
-        username: ${{ secrets.SSH_UNAME }}
-        KEY: ${{ secrets.SSH_KEY }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
-            cd In0ri
-            docker-compose pull
-            docker-compose up -d --remove-orphans
+#     - name: Update VPS
+#       uses: appleboy/ssh-action@master
+#       with:
+#         host: ${{ secrets.SSH_SERVER }}
+#         username: ${{ secrets.SSH_UNAME }}
+#         KEY: ${{ secrets.SSH_KEY }}
+#         port: ${{ secrets.SSH_PORT }}
+#         script: |
+#             cd In0ri
+#             docker-compose pull
+#             docker-compose up -d --remove-orphans
       
