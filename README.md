@@ -69,8 +69,7 @@ On the web server that you wants to be monitored by In0ri, download the Agent fo
 Installing the required packages for the internal Agent
 
 ```sh
-python3 -m pip install watchdog
-python3 -m pip install requests
+python3 -m pip install -r requirements.txt
 ```
 
 Edit the file `config.json` in the same folder as agent
