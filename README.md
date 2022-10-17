@@ -104,6 +104,7 @@ python3 agent.py
 * Model training is handled by [Shu](https://github.com/J4FSec/Shu)
 * [Black Hat Europe 2021](https://www.blackhat.com/eu-21/arsenal/schedule/index.html#inri-25045)
 * [Black Hat Asia 2022](https://www.blackhat.com/asia-22/arsenal/schedule/#inri-open-source-defacement-detection-with-deep-learning-25866)
+* [Black Hat USA 2022](https://www.blackhat.com/us-22/arsenal/schedule/index.html#inri-open-source-defacement-detection-with-deep-learning-27967)
 * Mentioned by [Kitploit](https://www.kitploit.com/2021/07/in0ri-defacement-detection-with-deep.html)
 
 ## Authors
