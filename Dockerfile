@@ -12,10 +12,14 @@ RUN apt install -y \
     python3-flask \
     firefox \
 && pip install selenium \
+&& pip install Werkzeug==2.0.1 \
 && pip install webdriver-manager \
 && pip install Pillow \
 && pip install python-telegram-bot \
-&& pip install requests \
+&& pip install urllib3==1.26.6 \
+&& pip install chardet==4.0.0 \
+&& pip install MarkupSafe==2.0.1 \
+&& pip install requests==2.26.0 \
 && pip install flask \  
 && pip install pymongo \
 && pip install python-crontab \
