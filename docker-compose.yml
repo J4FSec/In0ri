@@ -1,49 +1,49 @@
-version: "3.5"
+x-app-defaults: &app-defaults
+  build: .
+  image: in0ri/defaced:latest
+  restart: unless-stopped
+  environment:
+    REDIS_URL: "redis://redis:6379/0"
+  depends_on:
+    - redis
+  networks:
+    - app-network
+  volumes: 
+    - /etc/localtime:/etc/localtime:ro
+    - /etc/timezone:/etc/timezone:ro
+    - ./data:/opt/In0ri/data
+    - ./Alert:/opt/In0ri/Alert
+    - ./FlaskApp/static/images:/opt/In0ri/FlaskApp/static/images
+
 services:
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
+  redis:
+    image: redis:alpine
+    container_name: redis_queue
     restart: unless-stopped
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
     ports:
-      - "27017:27017"
+      - "6379:6379"
     networks:
       - app-network
-    volumes:
-      - type: volume
-        source: MONGO_DATA
-        target: /data/db
-      - type: volume
-        source: MONGO_CONFIG
-        target: /data/configdb
+
   flask:
-    image: in0ri/defaced:latest
+    <<: *app-defaults
     container_name: flask_app
-    restart: unless-stopped
-    environment:
-      MONGODB_USERNAME: admin
-      MONGODB_PASSWORD: admin
-      MONGODB_HOSTNAME: mongodb
     ports:
         - "8080:8080"
-        - "8088:8088"
-    depends_on:
-      - mongodb
-    networks:
-      - app-network
-    volumes: 
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-      - ./Alert:/opt/In0ri/Alert
+    command: python3 app.py
+
+  celery_worker:
+    <<: *app-defaults
+    container_name: celery_worker
+    working_dir: /opt/In0ri
+    command: celery -A tasks.celery_app worker --loglevel=info
+
+  celery_beat:
+    <<: *app-defaults
+    container_name: celery_beat
+    working_dir: /opt/In0ri
+    command: celery -A tasks.celery_app beat --loglevel=info
 
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  MONGO_DATA:
-    name: MONGO_DATA
-  MONGO_CONFIG:
-    name: MONGO_CONFIG

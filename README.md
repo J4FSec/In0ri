@@ -1,10 +1,10 @@
 ![](img/logo_transparent.png)
-![GitHub](https://img.shields.io/github/license/J4FSec/In0ri) ![](https://img.shields.io/badge/Python-3.6-informational) ![](https://img.shields.io/badge/uses-Flask-informational) ![](https://img.shields.io/badge/uses-Tensorflow-informational) ![](https://img.shields.io/badge/uses-Keras-informational) ![](https://img.shields.io/badge/uses-OpenSSL-informational) ![](https://img.shields.io/badge/uses-watchdog-informational)
+![GitHub](https://img.shields.io/github/license/J4FSec/In0ri) ![](https://img.shields.io/badge/Python-3.6-informational) ![](https://img.shields.io/badge/uses-Flask-informational) ![](https://img.shields.io/badge/uses-Tensorflow-informational) ![](https://img.shields.io/badge/uses-Keras-informational) ![](https://img.shields.io/badge/uses-watchdog-informational)
 
-In0ri is a defacement detection system utilizing a image-classification convolutional neural network.
+In0ri is an automated, AI-powered website defacement detection system.
 
 ## Introduction
-When monitoring a website, In0ri will periodically take a screenshot of the website then put it through a preprocessor that will resize the image down to 250x250px and numericalize the image before passing it onto the classifier. The core of the classifier is a convolutional neural network that is trained to detect the defacement of a website. If the monitored website is indeed, defaced, In0ri will send out warnings via email to the user.
+In0ri acts as an intelligent watchdog for your web applications. Instead of relying on traditional source code monitoring, it simulates real-user behavior by periodically taking screenshots of your target websites. These images are then analyzed by a trained model which is trained to identify visual anomalies and defacement patterns. Upon detecting a compromised page, In0ri immediately alerts administrators via Email or Telegram, enabling rapid incident response.
 
 ## Requirement
 * Python3 (version >=3.6)
@@ -27,33 +27,14 @@ You can also use In0ri via the official Docker container  [here](https://hub.doc
 ### Starting In0ri
 
 ```sh
-docker-compose up -d
+docker-compose up --build -d
 ```
 After running the In0ri, open an Internet browser to `https://<serverIP>:8080/` to show WebUI.
-
-### Configuring email credentials to send notifications and agent keys from
-
-Going to the WebUI and click tab "Setting" then select tag "Email" to configure email server.
-
-```py
-Mail Server = "mail.example.com"
-Username = "foo@gmail.com"
-Password = "$uper$ecurePa$$word"
-```
-
-### Configure Telegram notification
-
-Going to the WebUI and click tab "Setting" then select tag "Telegram" to configure Channel notifications on Telegram.
-
-```py
-Chat ID= 'foo' # Channel ID to send notifications to
-Token = 'bar' # Bot token retrieved from @BotFather
-```
 
 ## Usage
 
 There are two ways to deploy and using In0ri:
-* Running off crontab by periodically visiting the url.
+* Running off Celery Beat by periodically visiting the url.
 * Internal agent running off the web server
 
 ### First Method: URL Check
@@ -62,7 +43,7 @@ Visit the Dashboard tab on WebUI, click on "Add URLs" then fill in the form and 
 
 ### Second Method: Internal Agent
 
-At the table listing all urls which were registered on WebUI, click on "Create Key" button at column Actions, the Active Key will send to your email or click "Details" button to show it.
+At the table listing all urls which were registered on WebUI, click on "Create Key" button at column Actions, the API Key will send to your email or click "Details" button to show it.
 
 On the web server that you wants to be monitored by In0ri, download the Agent folder from Github repository
 
@@ -90,7 +71,7 @@ A `key` is sent to your email after registering the Agent on the WebUI
     "key":"123123123",
     "rootPath":"/var/www/html",
     "excludePath":"",
-    "apiServer":"http://<serverIP>:8088/checkdeface"
+    "apiServer":"http://<serverIP>:8080/checkdeface"
 }
 ```
 
@@ -101,7 +82,6 @@ python3 agent.py
 ```
 ## References
 
-* Model training is handled by [Shu](https://github.com/J4FSec/Shu)
 * [Black Hat Europe 2021](https://www.blackhat.com/eu-21/arsenal/schedule/index.html#inri-25045)
 * [Black Hat Asia 2022](https://www.blackhat.com/asia-22/arsenal/schedule/#inri-open-source-defacement-detection-with-deep-learning-25866)
 * [Black Hat USA 2022](https://www.blackhat.com/us-22/arsenal/schedule/index.html#inri-open-source-defacement-detection-with-deep-learning-27967)

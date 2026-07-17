@@ -8,7 +8,7 @@ function initTableData() {
     			url: eachUser.url,
                 email: eachUser.email,
   				time: eachUser.time,
-  				active_key: eachUser.active_key,
+  				api_key: eachUser.api_key,
   				path_img: eachUser.path_img,
     		};
     	});
@@ -51,7 +51,7 @@ function details(){
 		let path_img = data['path_img']
 		$('#show_url').html(data['url']);
 		$('#show_email').html(data['email']);
-		$('#show_activekey').html(data['active_key']);	
+		$('#show_activekey').html(data['api_key']);	
 		$('#show_img').html('<img class="card-img-top img-fluid" src="../static/images/'+path_img+'.png" alt="URL is not captured!">')	
 	});
 }
@@ -90,7 +90,7 @@ function createActiveKey() {
 			type: 'POST',
 			success: function(res) {
 				if(res == "OKE"){
-					alert("Generate Active Key Successful. Key sent your email!");
+					alert("Generate API Key Successful. Key sent your email!");
 					location.reload();
 				}else if (res == "Null"){
 					alert("Bad data!");

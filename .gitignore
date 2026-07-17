@@ -1,2 +1,4 @@
 __pycache__/
-images/
+FlaskApp/__pycache__/
+FlaskApp/static/images/*
+venv/

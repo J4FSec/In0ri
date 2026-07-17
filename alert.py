@@ -1,4 +1,3 @@
-import imghdr
 import os
 import smtplib
 import sys
@@ -19,11 +18,13 @@ db = database.Database("setting")
 
 class Alert:
     def sendMessage(self, receiver, subject, message, imagePath=None):
-        for data in db.get_multiple_data():
-            if "smtp" not in data:
-                smtpArray = []
-            else:
-                smtpArray = data["smtp"]
+        if not receiver:
+            return
+        try:
+            data = db.get_single_data({"data": "setting"}) or {}
+        except Exception:
+            data = {}
+        smtpArray = data.get("smtp", [])
         if len(smtpArray) == 0:
             return "1"
         for smtp in smtpArray:
@@ -39,26 +40,28 @@ class Alert:
 
         try: 
             if imagePath is not None:
+                import mimetypes
                 with open(imagePath, "rb") as f:
                     file_data = f.read()
-                    file_type = imghdr.what(f.name)
+                    mime_type, _ = mimetypes.guess_type(imagePath)
+                    maintype, subtype = (mime_type or "image/png").split("/", 1)
+                    
                 msg.add_attachment(
-                    file_data, maintype="image", subtype=file_type, filename="Website image"
+                    file_data, maintype=maintype, subtype=subtype, filename="Website image.png"
                 )
 
             with smtplib.SMTP_SSL(EMAIL_SERVER, 465) as smtp:
                 smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
                 smtp.send_message(msg)
-                smtp.close()
         except smtplib.SMTPException as e:
             print(e)
 
     def sendBot(self, url, img_path):
-        for data in db.get_multiple_data():
-            if "telegram" not in data:
-                telegramArray = []
-            else:
-                telegramArray = data["telegram"]
+        try:
+            data = db.get_single_data({"data": "setting"}) or {}
+        except Exception:
+            data = {}
+        telegramArray = data.get("telegram", [])
 
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
@@ -92,6 +95,3 @@ class Alert:
         except:
             return "ERROR"
 
-
-# alert = Alert()
-# print(alert.getBotInfo())
